@@ -9,7 +9,7 @@ import os
 
 
 
-class splitting:
+class preprocessing:
 
 
     def text_split(self,document):
@@ -28,5 +28,5 @@ class splitting:
 
         createdEmbeddings = FAISS.from_documents(splitted_docs,embedding=embeddings)
 
-        createdEmbeddings.save_local("vector_embeddings",  index_name="base_and_adjacent")
+        createdEmbeddings.save_local("vector_embeddings")
 

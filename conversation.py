@@ -18,36 +18,38 @@ splitter = RecursiveCharacterTextSplitter(chunk_overlap = 50, chunk_size = 200)
 
 docs_splitted = splitter.split_documents(data)
 
-embeddings = GoogleGenerativeAIEmbeddings(model = "models/embedding-001")
+print(len(docs_splitted))
 
-docs_embeddings = FAISS.from_documents(docs_splitted,embeddings)
+# embeddings = GoogleGenerativeAIEmbeddings(model = "models/embedding-001")
 
-docs_embeddings.save_local('docs_embeddings',index_name = 'created_embeddings')
+# docs_embeddings = FAISS.from_documents(docs_splitted,embeddings)
 
-new_docs_embeddings = FAISS.load_local('docs_embeddings',embeddings=embeddings,index_name="created_embeddings",allow_dangerous_deserialization=True)
+# docs_embeddings.save_local('docs_embeddings',index_name = 'created_embeddings')
 
-query = "Retrieve basic information about transformer."
+# new_docs_embeddings = FAISS.load_local('docs_embeddings',embeddings=embeddings,index_name="created_embeddings",allow_dangerous_deserialization=True)
 
-retriever = new_docs_embeddings.as_retriever(search_type = 'mmr', search_kwargs = {'k':10})
+# query = "Retrieve basic information about transformer."
 
-template = """ You are an AI bot which helps students with Examination questions. Students asks you questions.
-You have to answer the questions. 
+# retriever = new_docs_embeddings.as_retriever(search_type = 'mmr', search_kwargs = {'k':10})
 
-
-Question : {question}
-Answer: 
+# template = """ You are an AI bot which helps students with Examination questions. Students asks you questions.
+# You have to answer the questions. 
 
 
-"""
-
-prompt = PromptTemplate(template=template,input_variables=['question'])
-
-model = ChatGoogleGenerativeAI(model='gemini-pro')
+# Question : {question}
+# Answer: 
 
 
-chain = RetrievalQA.from_chain_type(llm = model, retriever=retriever)
+# """
 
-response = chain(prompt)
+# prompt = PromptTemplate(template=template,input_variables=['question'])
 
-print(response)
+# model = ChatGoogleGenerativeAI(model='gemini-pro')
+
+
+# chain = RetrievalQA.from_chain_type(llm = model, retriever=retriever)
+
+# response = chain(prompt)
+
+# print(response)
 
