@@ -25,7 +25,7 @@ def get_pdf_text(uploaded_file):
         for uFile in uploaded_file:
             with open(os.path.join(path,uFile.name),"wb") as file:
                 file.write(uFile.getvalue())
-        pptContent = DirectoryLoader('.\content',loader_cls=UnstructuredFileLoader,loader_kwargs={'mode':"single","strategy":"fast"})
+        pptContent = DirectoryLoader(path,loader_cls=UnstructuredFileLoader,loader_kwargs={'mode':"single","strategy":"fast"})
         pptContent = pptContent.load()
         return pptContent
 
