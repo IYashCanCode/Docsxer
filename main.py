@@ -13,7 +13,7 @@ from langchain.prompts import PromptTemplate
 
 
 os.environ["GOOGLE_API_KEY"] = "AIzaSyBfRzQtaS_d6pDoAx-eU-IqCrfQUBr0_Jo"
-path = '.\content'
+path = '/mount/src/rag/content'
 
 
 
