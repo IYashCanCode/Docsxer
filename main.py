@@ -23,7 +23,7 @@ path = './content'
 def get_pdf_text(uploaded_file):
     if uploaded_file is not None:
         for uFile in uploaded_file:
-            with open('./content/main.txt,"wb") as file:
+            with open('content/main.txt,"wb") as file:
                 file.write(uFile.getvalue())
         pptContent = DirectoryLoader(path,loader_cls=UnstructuredFileLoader,loader_kwargs={'mode':"single","strategy":"fast"})
         pptContent = pptContent.load()
