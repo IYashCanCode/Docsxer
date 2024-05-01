@@ -13,7 +13,7 @@ from langchain.prompts import PromptTemplate
 
 
 os.environ["GOOGLE_API_KEY"] = "AIzaSyBfRzQtaS_d6pDoAx-eU-IqCrfQUBr0_Jo"
-path = './mount/src/rag/content'
+path = './content'
 
 
 
@@ -23,7 +23,7 @@ path = './mount/src/rag/content'
 def get_pdf_text(uploaded_file):
     if uploaded_file is not None:
         for uFile in uploaded_file:
-            with open(os.path.join(path+uFile.name),"wb") as file:
+            with open('./content/main.txt,"wb") as file:
                 file.write(uFile.getvalue())
         pptContent = DirectoryLoader(path,loader_cls=UnstructuredFileLoader,loader_kwargs={'mode':"single","strategy":"fast"})
         pptContent = pptContent.load()
