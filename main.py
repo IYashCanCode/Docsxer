@@ -186,11 +186,9 @@ def main():
                             FAISS.load_local(email_input, embeddings = embeddings, allow_dangerous_deserialization=True)
 
                         except Exception:
-                            st.write("Creating new embeddings")
                             get_vector_store(text_chunks,email_input)
                         
                         else:
-                            st.write("Add some new embeddings to previous one.")
                             add_new_text(previous_embeddings=email_input,text_chunks=text_chunks)
 
                             
